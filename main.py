@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import math
 import numpy as np
+import os
 
 # mentioned in part1
 from sklearn.datasets import load_files
@@ -24,6 +25,29 @@ from sklearn.neural_network import MLPClassifier
 # part1 examples of functions
 # data = load_files()
 # fig.savefig('comparison.png', dpi=200)
+
+# part1 - 2
+# create a list that contains corresponding count
+def walkFiles(folder_li):
+    f_count_list = []
+    for folder in folder_li:
+        count = 0
+        for root, dirs, files in os.walk("./inputData/BBC/" + folder):
+            for file in files:
+                count += 1
+        f_count_list.append(count)
+    return f_count_list
+
+
+folder_list = ["business", "entertainment", "politics", "sport", "tech"]
+files_num_list = walkFiles(folder_list)
+x = np.array(folder_list)
+y = np.array(files_num_list)
+
+plt.bar(x, y, color="#602D35", width=0.2)
+# plt.savefig('BBC-distribution.pdf', dpi=320)
+# plt.show()
+
 
 # 3 load files with encoding latin1
 BBC_data_raw = load_files("inputData/BBC/", load_content=True, encoding="latin1")
