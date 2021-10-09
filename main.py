@@ -21,11 +21,15 @@ from sklearn.linear_model import Perceptron
 from sklearn.neural_network import MLPClassifier
 
 
-print("Oi boi")
-
 # part1 examples of functions
 # data = load_files()
 # fig.savefig('comparison.png', dpi=200)
+
+# 3 load files with encoding latin1
+BBC_data_raw = load_files("inputData/BBC/", load_content=True, encoding="latin1")
+
+# 4 pre-process dataset to have the features ready to be used for NB
+
 
 # part2 examples of functions
 # df = pd.read_csv('data.csv')
